@@ -4,7 +4,7 @@ import android.content.Intent
 import android.graphics.{Bitmap, Canvas}
 import android.location.Location
 import android.os.Bundle
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.view.{MenuItem, View, Window}
 import android.widget.TextView
 import com.google.android.gms.maps.GoogleMap.{InfoWindowAdapter, OnCameraChangeListener}
@@ -28,7 +28,7 @@ object RouteMapV2Activity {
 
 }
 
-class RouteMapV2Activity extends ActionBarActivity
+class RouteMapV2Activity extends AppCompatActivity
   with RouteMapLike {
 
   import RouteMapV2Activity._

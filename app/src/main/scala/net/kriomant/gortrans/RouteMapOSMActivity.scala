@@ -8,7 +8,7 @@ import android.graphics.{Point, _}
 import android.location.Location
 import android.os.Bundle
 import android.preference.PreferenceManager
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View.{MeasureSpec, OnClickListener}
 import android.view._
@@ -32,7 +32,7 @@ object RouteMapOSMActivity {
   private val DIALOG_NEW_MAP_NOTICE = 1
 }
 
-class RouteMapOSMActivity extends ActionBarActivity
+class RouteMapOSMActivity extends AppCompatActivity
   with RouteMapLike
 
   with ShortcutTarget {

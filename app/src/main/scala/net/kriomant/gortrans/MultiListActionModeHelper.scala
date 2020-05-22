@@ -1,6 +1,6 @@
 package net.kriomant.gortrans
 
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.view.{ActionMode, View}
 import android.widget.AdapterView.{OnItemClickListener, OnItemLongClickListener}
 import android.widget.{AbsListView, AdapterView, ListView}
@@ -12,7 +12,7 @@ trait ListSelectionActionModeCallback {
 }
 
 class MultiListActionModeHelper(
-                                 activity: ActionBarActivity,
+                                 activity: AppCompatActivity,
                                  actionModeCallback: ActionMode.Callback with ListSelectionActionModeCallback
                                ) {
   private[this] val listViews = new mutable.ArrayBuffer[ListView]

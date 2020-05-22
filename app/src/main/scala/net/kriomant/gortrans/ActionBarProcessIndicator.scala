@@ -1,9 +1,9 @@
 package net.kriomant.gortrans
 
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 
-class ActionBarProcessIndicator(activity: ActionBarActivity) extends DataManager.ProcessIndicator {
+class ActionBarProcessIndicator(activity: AppCompatActivity) extends DataManager.ProcessIndicator {
   def startFetch() {
     Toast.makeText(activity, R.string.background_update_started, Toast.LENGTH_SHORT).show()
     activity.setSupportProgressBarIndeterminateVisibility(true)
@@ -24,7 +24,7 @@ class ActionBarProcessIndicator(activity: ActionBarActivity) extends DataManager
   }
 }
 
-class FragmentActionBarProcessIndicator(activity: ActionBarActivity) extends DataManager.ProcessIndicator {
+class FragmentActionBarProcessIndicator(activity: AppCompatActivity) extends DataManager.ProcessIndicator {
   def startFetch() {
     Toast.makeText(activity, R.string.background_update_started, Toast.LENGTH_SHORT).show()
     activity.setSupportProgressBarIndeterminateVisibility(true)

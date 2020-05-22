@@ -3,7 +3,7 @@ package net.kriomant.gortrans
 import android.app.Activity
 import android.content.{Context, Intent}
 import android.os.Bundle
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.text.SpannableStringBuilder
 import android.text.style.ImageSpan
 import android.view.View
@@ -23,7 +23,7 @@ object EditGroupActivity {
   }
 }
 
-class EditGroupActivity extends ActionBarActivity with BaseActivity {
+class EditGroupActivity extends AppCompatActivity with BaseActivity {
   self =>
 
   import EditGroupActivity._

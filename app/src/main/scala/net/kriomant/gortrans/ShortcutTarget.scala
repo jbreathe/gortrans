@@ -1,11 +1,11 @@
 package net.kriomant.gortrans
 
 import android.content.Intent
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.view.{Menu, MenuItem}
 import android.widget.Toast
 
-trait ShortcutTarget extends ActionBarActivity {
+trait ShortcutTarget extends AppCompatActivity {
   def getShortcutNameAndIcon: (String, Int)
 
   override def onCreateOptionsMenu(menu: Menu): Boolean = {

@@ -5,7 +5,7 @@ import java.util.Calendar
 import android.content.{Context, Intent}
 import android.os.Bundle
 import android.support.v4.view.{PagerAdapter, ViewPager}
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.text.style.{CharacterStyle, ForegroundColorSpan}
 import android.text.{SpannableString, SpannableStringBuilder, Spanned}
 import android.util.Log
@@ -38,7 +38,7 @@ object StopScheduleActivity {
   }
 }
 
-class StopScheduleActivity extends ActionBarActivity with BaseActivity with ShortcutTarget {
+class StopScheduleActivity extends AppCompatActivity with BaseActivity with ShortcutTarget {
 
   import StopScheduleActivity._
 

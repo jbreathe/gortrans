@@ -4,7 +4,7 @@
                                                            android:layout_width="match_parent"
                                                            android:layout_height="match_parent"
                                                            android:orientation="horizontal"
-                                                           android:background="@drawable/abc_ab_stacked_solid_dark_holo"
+                                                           android:background="@drawable/abc_item_background_holo_dark"
 >
     <TextView
             android:id="@+id/route_name"

@@ -9,8 +9,9 @@ import android.support.v4.app.{FragmentPagerAdapter, ListFragment}
 import android.support.v4.view.ViewPager
 import android.support.v4.view.ViewPager.OnPageChangeListener
 import android.support.v4.widget.CursorAdapter
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.internal.widget.ScrollingTabContainerView
+import android.support.v7.widget.LinearLayoutCompat
 import android.util.TypedValue
 import android.view.View.OnClickListener
 import android.view.{LayoutInflater, View, ViewGroup}
@@ -130,7 +131,7 @@ object RouteListBaseActivity {
   }
 }
 
-class RouteListBaseActivity extends ActionBarActivity with BaseActivity {
+class RouteListBaseActivity extends AppCompatActivity with BaseActivity {
   private[this] final val TAG = classOf[RouteListBaseActivity].getSimpleName
   protected val layoutResource: Int = R.layout.route_list_base_activity
   var tabsOrder: Seq[core.VehicleType.Value] = _
@@ -189,7 +190,7 @@ class RouteListBaseActivity extends ActionBarActivity with BaseActivity {
       // all it does is calls tab.select(), but it doesn't work because tabs are not added
       // to action bar.
       // Following code relies on ScrollingTabContainerView internals.
-      tabsView.getChildAt(0).asInstanceOf[LinearLayout].getChildAt(i).setOnClickListener(new OnClickListener {
+      tabsView.getChildAt(0).asInstanceOf[LinearLayoutCompat].getChildAt(i).setOnClickListener(new OnClickListener {
         def onClick(v: View) {
           tabPager.setCurrentItem(i)
           selectedTabIndex = i

@@ -4,7 +4,7 @@ import java.util.{Calendar, Date}
 
 import android.content.{Context, Intent}
 import android.os.Bundle
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.text.format.{DateFormat, DateUtils}
 import android.util.Log
 import android.view.View.OnClickListener
@@ -46,7 +46,7 @@ object RouteStopInfoActivity {
 
 /** List of closest vehicle arrivals for given route stop.
   */
-class RouteStopInfoActivity extends ActionBarActivity
+class RouteStopInfoActivity extends AppCompatActivity
   with BaseActivity
 
   with ShortcutTarget

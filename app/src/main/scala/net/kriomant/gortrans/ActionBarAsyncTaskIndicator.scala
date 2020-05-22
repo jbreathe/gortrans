@@ -1,11 +1,11 @@
 package net.kriomant.gortrans
 
 import android.os.Bundle
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.view.Window
 
-trait ActionBarAsyncTaskIndicator extends ActionBarActivity {
-  activity: ActionBarActivity =>
+trait ActionBarAsyncTaskIndicator extends AppCompatActivity {
+  activity: AppCompatActivity =>
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
     supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS)

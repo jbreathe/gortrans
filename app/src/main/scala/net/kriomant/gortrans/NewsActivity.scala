@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.LoaderManager.LoaderCallbacks
 import android.support.v4.content.Loader
 import android.support.v4.widget.CursorAdapter
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.text._
 import android.text.method.LinkMovementMethod
 import android.text.style.URLSpan
@@ -20,7 +20,7 @@ object NewsActivity {
 
 class NewsActivity extends NewsActivityBase with HavingSidebar
 
-class NewsActivityBase extends ActionBarActivity with BaseActivity {
+class NewsActivityBase extends AppCompatActivity with BaseActivity {
 
   import NewsActivity._
 

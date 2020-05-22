@@ -4,7 +4,7 @@ import android.app.SearchManager
 import android.content.{Context, Intent}
 import android.os.Bundle
 import android.support.v4.widget.CursorAdapter
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.text.style.UnderlineSpan
 import android.text.{SpannableString, Spanned}
 import android.view.{MenuItem, View}
@@ -13,7 +13,7 @@ import android.widget.{AdapterView, ImageView, ListView, TextView}
 import net.kriomant.gortrans.core.VehicleType
 import net.kriomant.gortrans.utils.closing
 
-class SearchActivity extends ActionBarActivity with BaseActivity {
+class SearchActivity extends AppCompatActivity with BaseActivity {
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
 
