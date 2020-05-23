@@ -20,6 +20,7 @@
         Создайте группу маршрутов или откройте полный список для просмотра индивидуальных маршрутов.
     </string>
     <string name="choose_routes">Выберите маршруты</string>
+    <string name="accept_selection">Подтвердить выбор</string>
     <string name="groups">Группы</string>
 
     <string name="bus">Автобус</string>
@@ -110,7 +111,8 @@
 
     <string name="delete">Удалить</string>
     <string name="edit">Изменить</string>
-    <string name="accept">Подтвердить</string>
+    <!-- unused? -->
+    <!--<string name="accept">Подтвердить</string>-->
 
     <!-- One schedule row for vehicle popup on map. Parameters: time, stop name. -->
     <string name="vehicle_schedule_row">%1$s %2$s</string>
