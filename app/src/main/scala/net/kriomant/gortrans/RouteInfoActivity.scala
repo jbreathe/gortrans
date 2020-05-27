@@ -111,7 +111,7 @@ class RouteInfoActivity extends AppCompatActivity with BaseActivity {
       }
 
       if (stopsCursor.getCount != 0) {
-        findViewById(R.id.error_message).setVisibility(View.GONE)
+        findViewById(R.id.error_message).asInstanceOf[View].setVisibility(View.GONE)
         listView.setVisibility(View.VISIBLE)
       } else {
         val view = findViewById(R.id.error_message).asInstanceOf[TextView]

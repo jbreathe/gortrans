@@ -8,7 +8,6 @@ trait ActionBarAsyncTaskIndicator extends AppCompatActivity {
   activity: AppCompatActivity =>
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
-    supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS)
   }
 
   trait AsyncProcessIndicator[Progress, Result] extends AsyncTaskBridge[Progress, Result] {

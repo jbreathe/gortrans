@@ -41,7 +41,7 @@ class EditGroupActivity extends AppCompatActivity with BaseActivity {
 
     groupNameEdit = findViewById(R.id.group_name_edit).asInstanceOf[EditText]
     routesText = findViewById(R.id.routes_list).asInstanceOf[TextView]
-    val editRoutesButton = findViewById(R.id.edit_routes)
+    val editRoutesButton = findViewById(R.id.edit_routes).asInstanceOf[View]
 
     editRoutesButton.setOnClickListener(new OnClickListener {
       def onClick(v: View) {

@@ -59,14 +59,14 @@ class VehicleMarker private(state: VehicleMarker.ConstantState) extends Drawable
 
   def draw(canvas: Canvas) {
     val bounds = getBounds
-    canvas.saveLayerAlpha(bounds.left, bounds.top, bounds.right, bounds.bottom, _alpha, Canvas.HAS_ALPHA_LAYER_SAVE_FLAG)
+    canvas.saveLayerAlpha(bounds.left, bounds.top, bounds.right, bounds.bottom, _alpha)
     state.back.draw(canvas)
     if (state.front.isVisible)
       state.front.draw(canvas)
 
     if (state.arrow.isVisible) {
       state.angle foreach { a =>
-        canvas.save(Canvas.MATRIX_SAVE_FLAG)
+        canvas.save
         val arrowBounds = state.arrow.getBounds
         canvas.rotate(-a, (arrowBounds.left + arrowBounds.right) / 2.0f, (arrowBounds.top + arrowBounds.bottom) / 2.0f)
         state.arrow.draw(canvas)

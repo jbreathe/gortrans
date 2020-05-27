@@ -63,8 +63,6 @@ class RouteMapOSMActivity extends AppCompatActivity
   override def onCreate(bundle: Bundle) {
     super.onCreate(bundle)
 
-    // Enable to show indeterminate progress indicator in activity header.
-    supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS)
     setSupportProgressBarIndeterminateVisibility(false)
 
     setContentView(R.layout.route_map_osm)

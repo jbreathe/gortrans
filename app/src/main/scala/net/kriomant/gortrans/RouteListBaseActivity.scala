@@ -10,8 +10,7 @@ import android.support.v4.view.ViewPager
 import android.support.v4.view.ViewPager.OnPageChangeListener
 import android.support.v4.widget.CursorAdapter
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.internal.widget.ScrollingTabContainerView
-import android.support.v7.widget.LinearLayoutCompat
+import android.support.v7.widget.{LinearLayoutCompat, ScrollingTabContainerView}
 import android.util.TypedValue
 import android.view.View.OnClickListener
 import android.view.{LayoutInflater, View, ViewGroup}
@@ -214,7 +213,8 @@ class RouteListBaseActivity extends AppCompatActivity with BaseActivity {
     })
   }
 
-  protected def tabsAreEmbedded: Boolean = getResources.getBoolean(R.bool.abc_action_bar_embed_tabs_pre_jb)
+  // todo: remove?
+  protected def tabsAreEmbedded: Boolean = false
 
   override def onStart() {
     super.onStart()

@@ -114,7 +114,7 @@ class StopScheduleActivity extends AppCompatActivity with BaseActivity with Shor
         viewPager.setVisibility(View.VISIBLE)
 
       } else {
-        findViewById(R.id.no_schedules).setVisibility(View.VISIBLE)
+        findViewById(R.id.no_schedules).asInstanceOf[View].setVisibility(View.VISIBLE)
       }
     }
   }

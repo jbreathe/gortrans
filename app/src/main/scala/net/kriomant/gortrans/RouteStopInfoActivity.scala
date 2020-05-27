@@ -80,14 +80,13 @@ class RouteStopInfoActivity extends AppCompatActivity
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
 
-    supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS)
     setSupportProgressBarIndeterminateVisibility(false)
     setProgressBarIndeterminateVisibility(false)
 
     setContentView(R.layout.route_stop_info)
 
-    setSupportProgressBarIndeterminateVisibility(false)
-    setProgressBarIndeterminateVisibility(false)
+//    setSupportProgressBarIndeterminateVisibility(false)
+//    setProgressBarIndeterminateVisibility(false)
 
     // Get route stop reference info.
     val intent = getIntent
@@ -334,7 +333,7 @@ class RouteStopInfoActivity extends AppCompatActivity
     flatRoute.setStops(totalLength.toFloat, unfoldedStops, stopIndexByDirection(direction))
 
     if (availableDirections == DirectionsEx.Both) {
-      val toggleDirectionButton = findViewById(R.id.toggle_direction)
+      val toggleDirectionButton = findViewById(R.id.toggle_direction).asInstanceOf[View]
       toggleDirectionButton.setOnClickListener(new OnClickListener {
         def onClick(p1: View) {
           direction = Direction.inverse(direction)

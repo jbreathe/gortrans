@@ -49,8 +49,6 @@ class RouteMapV2Activity extends AppCompatActivity
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
 
-    // Enable to show indeterminate progress indicator in activity header.
-    supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS)
     setSupportProgressBarIndeterminateVisibility(false)
 
     setContentView(R.layout.route_map_v2)

@@ -60,7 +60,7 @@ class MainActivityBase extends RouteListBaseActivity with CreateGroupDialog.List
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
       val item = menu.findItem(R.id.search_route)
-      val searchView = MenuItemCompat.getActionView(item).asInstanceOf[widget.SearchView]
+      val searchView = item.getActionView.asInstanceOf[widget.SearchView]
       val searchManager = getSystemService(Context.SEARCH_SERVICE).asInstanceOf[SearchManager]
       searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName))
     }

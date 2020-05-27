@@ -426,7 +426,7 @@ trait RouteMapLike extends BaseActivity with TrackLocation {
     Log.d("RouteMapActivity", "Location updated: %s" format location)
     setLocationMarker(location)
 
-    findViewById(R.id.show_my_location).setVisibility(if (location != null) View.VISIBLE else View.INVISIBLE)
+    findViewById(R.id.show_my_location).asInstanceOf[View].setVisibility(if (location != null) View.VISIBLE else View.INVISIBLE)
   }
 
   def updateVehiclesLocation(result: Either[String, Seq[VehicleInfo]]) {
