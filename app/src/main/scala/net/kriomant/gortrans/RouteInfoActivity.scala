@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.v4.widget.CursorAdapter
 import android.support.v7.app.AppCompatActivity
 import android.view.{Menu, MenuItem, View}
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.{AdapterView, ListAdapter, ListView, TextView}
 import net.kriomant.gortrans.core._
 import net.kriomant.gortrans.utils.closing
@@ -28,8 +27,6 @@ object RouteInfoActivity {
 class RouteInfoActivity extends AppCompatActivity with BaseActivity {
 
   import RouteInfoActivity._
-
-  private[this] final val TAG = "RouteInfoActivity"
 
   private[this] var stopsCursor: Database.FoldedRouteStopsTable.Cursor = _
 

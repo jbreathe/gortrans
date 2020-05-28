@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.text.format.{DateFormat, DateUtils}
 import android.util.Log
 import android.view.View.OnClickListener
-import android.view.{Menu, MenuItem, View, Window}
+import android.view.{Menu, MenuItem, View}
 import android.widget.{ListAdapter, ListView, TextView, Toast}
 import net.kriomant.gortrans.core.{Route, _}
 import net.kriomant.gortrans.geometry.Point
@@ -48,9 +48,7 @@ object RouteStopInfoActivity {
   */
 class RouteStopInfoActivity extends AppCompatActivity
   with BaseActivity
-
-  with ShortcutTarget
-  with ActionBarAsyncTaskIndicator {
+  with ShortcutTarget {
 
   import RouteStopInfoActivity._
 
@@ -80,13 +78,7 @@ class RouteStopInfoActivity extends AppCompatActivity
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
 
-    setSupportProgressBarIndeterminateVisibility(false)
-    setProgressBarIndeterminateVisibility(false)
-
     setContentView(R.layout.route_stop_info)
-
-//    setSupportProgressBarIndeterminateVisibility(false)
-//    setProgressBarIndeterminateVisibility(false)
 
     // Get route stop reference info.
     val intent = getIntent
@@ -358,8 +350,7 @@ class RouteStopInfoActivity extends AppCompatActivity
     super.onPause()
   }
 
-  class RefreshArrivalsTask extends AsyncTaskBridge[Unit, Either[String, Seq[Date]]]
-    with AsyncProcessIndicator[Unit, Either[String, Seq[Date]]] {
+  class RefreshArrivalsTask extends AsyncTaskBridge[Unit, Either[String, Seq[Date]]] {
     override def doInBackgroundBridge(): Either[String, Seq[Date]] = {
       val fixedStopName = core.fixStopName(vehicleType, routeName, stopName)
 

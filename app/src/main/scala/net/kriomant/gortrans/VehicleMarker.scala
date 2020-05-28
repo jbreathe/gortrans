@@ -3,6 +3,7 @@ package net.kriomant.gortrans
 import android.content.res.Resources
 import android.graphics._
 import android.graphics.drawable.Drawable
+import android.support.v4.content.res.ResourcesCompat
 
 object VehicleMarker {
 
@@ -23,9 +24,9 @@ object VehicleMarker {
     // color filter is part of constant state and is shared between
     // drawables, so they are needed to be mutated.
     def this(resources: Resources, angle: Option[Float], color: Int) = this(
-      resources.getDrawable(R.drawable.vehicle_marker_back).mutate(),
-      resources.getDrawable(R.drawable.vehicle_marker_front),
-      resources.getDrawable(R.drawable.vehicle_marker_arrow).mutate(),
+      ResourcesCompat.getDrawable(resources, R.drawable.vehicle_marker_back, null).mutate(),
+      ResourcesCompat.getDrawable(resources, R.drawable.vehicle_marker_front, null),
+      ResourcesCompat.getDrawable(resources, R.drawable.vehicle_marker_arrow, null).mutate(),
       angle, color
     )
 

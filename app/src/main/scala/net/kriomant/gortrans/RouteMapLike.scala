@@ -4,6 +4,7 @@ import android.content.{Context, Intent}
 import android.graphics.RectF
 import android.location.Location
 import android.os.Bundle
+import android.support.v4.content.res.ResourcesCompat
 import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
@@ -153,7 +154,7 @@ trait RouteMapLike extends BaseActivity with TrackLocation {
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
 
-    rainbow = Rainbow(getResources.getColor(R.color.forward_vehicle))
+    rainbow = Rainbow(ResourcesCompat.getColor(getResources, R.color.forward_vehicle, null))
     dataManager = getApplication.asInstanceOf[CustomApplication].dataManager
 
     hasOldState = savedInstanceState != null
@@ -435,7 +436,7 @@ trait RouteMapLike extends BaseActivity with TrackLocation {
         val vehiclesPointsAndAngles = android_utils.measure(TAG, "snapping %d vehicles" format vehicles.length) {
           vehicles map { v =>
             routes.get((v.vehicleType, v.routeId)) match {
-              case None => (v, Pt(v.latitude, v.longitude), Some(v.azimuth / 180.0 * math.Pi), getResources.getColor(R.color.forward_vehicle))
+              case None => (v, Pt(v.latitude, v.longitude), Some(v.azimuth / 180.0 * math.Pi), ResourcesCompat.getColor(getResources, R.color.forward_vehicle, null))
               case Some(route) =>
                 val (pt, segment) = v.direction match {
                   case Some(Direction.Forward) => core.snapVehicleToRoute(v, route.forwardRoutePoints)

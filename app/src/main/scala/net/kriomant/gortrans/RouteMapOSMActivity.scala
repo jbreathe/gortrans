@@ -8,6 +8,8 @@ import android.graphics.{Point, _}
 import android.location.Location
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.support.v4.content.ContextCompat
+import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View.{MeasureSpec, OnClickListener}
@@ -62,8 +64,6 @@ class RouteMapOSMActivity extends AppCompatActivity
 
   override def onCreate(bundle: Bundle) {
     super.onCreate(bundle)
-
-    setSupportProgressBarIndeterminateVisibility(false)
 
     setContentView(R.layout.route_map_osm)
     mapView = findViewById(R.id.route_map_osm_view).asInstanceOf[MapView]
@@ -128,12 +128,12 @@ class RouteMapOSMActivity extends AppCompatActivity
     // Add route markers.
     val forwardRouteOverlay: Overlay = new RouteOverlayOSM(
       this,
-      getResources, getResources.getColor(R.color.forward_route),
+      getResources, ContextCompat.getColor(this, R.color.forward_route),
       routeParams.forwardRoutePoints map routePointToGeoPoint
     )
     val backwardRouteOverlay: Overlay = new RouteOverlayOSM(
       this,
-      getResources, getResources.getColor(R.color.backward_route),
+      getResources, ContextCompat.getColor(this, R.color.backward_route),
       routeParams.backwardRoutePoints map routePointToGeoPoint
     )
     val routeOverlays = Iterator(forwardRouteOverlay, backwardRouteOverlay)
@@ -231,11 +231,9 @@ class RouteMapOSMActivity extends AppCompatActivity
   }
 
   def startBackgroundProcessIndication() {
-    setSupportProgressBarIndeterminateVisibility(true)
   }
 
   def stopBackgroundProcessIndication() {
-    setSupportProgressBarIndeterminateVisibility(false)
   }
 
   def clearVehicleMarkers() {
@@ -383,7 +381,7 @@ class RouteStopOverlayOSM(context: Context, resources: Resources, geoPoint: GeoP
 }
 
 class RouteStopNameOverlayManagerOSM(resources: Resources) {
-  private val frame = resources.getDrawable(R.drawable.stop_name_frame).asInstanceOf[NinePatchDrawable]
+  private val frame = ResourcesCompat.getDrawable(resources, R.drawable.stop_name_frame, null).asInstanceOf[NinePatchDrawable]
 
   private val framePadding = new Rect
   frame.getPadding(framePadding)
@@ -540,10 +538,10 @@ class MapBalloonControllerOSM(context: Context, mapView: MapView) {
 class VehiclesOverlayOSM(
                           context: RouteMapOSMActivity, resources: Resources, balloonController: MapBalloonControllerOSM
                         ) extends ItemizedOverlay[OverlayItem](
-  resources.getDrawable(R.drawable.vehicle_stopped_marker),
+  ResourcesCompat.getDrawable(resources, R.drawable.vehicle_stopped_marker, null),
   new DefaultResourceProxyImpl(context)
 ) {
-  val vehicleUnknown: Drawable = resources.getDrawable(R.drawable.vehicle_stopped_marker)
+  val vehicleUnknown: Drawable = ResourcesCompat.getDrawable(resources, R.drawable.vehicle_stopped_marker, null)
   val balloon: View = balloonController.inflateView(R.layout.map_vehicle_popup)
   // Information to identify vehicle for which balloon is shown.
   var balloonVehicle: (VehicleType.Value, String, Int) = _

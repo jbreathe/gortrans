@@ -6,6 +6,7 @@ import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.{FragmentPagerAdapter, ListFragment}
+import android.support.v4.content.res.ResourcesCompat
 import android.support.v4.view.ViewPager
 import android.support.v4.view.ViewPager.OnPageChangeListener
 import android.support.v4.widget.CursorAdapter
@@ -23,7 +24,7 @@ import net.kriomant.gortrans.core.VehicleType
 import scala.collection.mutable
 
 object RouteListBaseActivity {
-  val routeRenames = Map(
+  val routeRenames: Map[(VehicleType.Value, String), String] = Map(
     (VehicleType.Bus, "51л") -> "651л",
     (VehicleType.Bus, "4") -> "1004",
     (VehicleType.Bus, "10") -> "1011",
@@ -117,7 +118,7 @@ object RouteListBaseActivity {
     (VehicleType.MiniBus, "22") -> "1444а"
   )
 
-  val routeNameFormatByVehicleType = Map(
+  val routeNameFormatByVehicleType: Map[VehicleType.Value, Int] = Map(
     VehicleType.Bus -> R.string.bus_n,
     VehicleType.TrolleyBus -> R.string.trolleybus_n,
     VehicleType.TramWay -> R.string.tramway_n,
@@ -131,9 +132,8 @@ object RouteListBaseActivity {
 }
 
 class RouteListBaseActivity extends AppCompatActivity with BaseActivity {
-  private[this] final val TAG = classOf[RouteListBaseActivity].getSimpleName
   protected val layoutResource: Int = R.layout.route_list_base_activity
-  var tabsOrder: Seq[core.VehicleType.Value] = _
+  var tabsOrder: Seq[VehicleType.Value] = _
   var tabFragmentsMap: mutable.Map[VehicleType.Value, RoutesListFragment] = mutable.Map()
   var tabsView: ScrollingTabContainerView = _
   var selectedTabIndex: Int = 0
@@ -172,7 +172,7 @@ class RouteListBaseActivity extends AppCompatActivity with BaseActivity {
       VehicleType.TrolleyBus -> R.drawable.tab_trolleybus,
       VehicleType.TramWay -> R.drawable.tab_tram,
       VehicleType.MiniBus -> R.drawable.tab_minibus
-    ).mapValues(getResources.getDrawable(_))
+    ).mapValues(ResourcesCompat.getDrawable(getResources, _, null))
 
     val tabPager = findViewById(R.id.tab_pager).asInstanceOf[ViewPager]
 

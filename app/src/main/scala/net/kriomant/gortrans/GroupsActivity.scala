@@ -215,7 +215,7 @@ class GroupsActivityBase extends AppCompatActivity with BaseActivity with Create
 }
 
 object RouteGroupsAdapter {
-  val vehicleTypeDrawables = Map(
+  val vehicleTypeDrawables: Map[VehicleType.Value, Int] = Map(
     VehicleType.Bus -> R.drawable.tab_bus,
     VehicleType.TrolleyBus -> R.drawable.tab_trolleybus,
     VehicleType.TramWay -> R.drawable.tab_tram,

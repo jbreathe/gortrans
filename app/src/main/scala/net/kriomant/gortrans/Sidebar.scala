@@ -33,7 +33,7 @@ object Sidebar {
 class Sidebar(activity: Activity, navigationDrawer: View, listener: Sidebar.SidebarListener) {
   val list: ListView = navigationDrawer.findViewById(R.id.sidebar_content).asInstanceOf[ListView]
 
-  val items = Seq(
+  val items: Seq[Sidebar.Entry] = Seq(
     Sidebar.Entry(R.string.groups, {
       val intent = GroupsActivity.createIntent(activity)
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION)

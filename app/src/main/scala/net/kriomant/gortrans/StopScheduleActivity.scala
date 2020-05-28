@@ -4,6 +4,7 @@ import java.util.Calendar
 
 import android.content.{Context, Intent}
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.{PagerAdapter, ViewPager}
 import android.support.v7.app.AppCompatActivity
 import android.text.style.{CharacterStyle, ForegroundColorSpan}
@@ -41,8 +42,6 @@ object StopScheduleActivity {
 class StopScheduleActivity extends AppCompatActivity with BaseActivity with ShortcutTarget {
 
   import StopScheduleActivity._
-
-  private[this] final val TAG = "StopScheduleActivity"
 
   private var routeId: String = _
   private var routeName: String = _
@@ -160,7 +159,7 @@ class StopScheduleActivity extends AppCompatActivity with BaseActivity with Shor
         val minBuilder = new SpannableStringBuilder
 
         if (hour < currentHour) {
-          val span = new ForegroundColorSpan(getResources.getColor(R.color.schedule_past))
+          val span = new ForegroundColorSpan(ContextCompat.getColor(context, R.color.schedule_past))
 
           hourStr.setSpan(CharacterStyle.wrap(span), 0, hourStr.length, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
 
@@ -168,7 +167,7 @@ class StopScheduleActivity extends AppCompatActivity with BaseActivity with Shor
           minBuilder.setSpan(span, 0, minBuilder.length, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
 
         } else if (hour > currentHour) {
-          val span = new ForegroundColorSpan(getResources.getColor(R.color.schedule_future))
+          val span = new ForegroundColorSpan(ContextCompat.getColor(context, R.color.schedule_future))
 
           hourStr.setSpan(CharacterStyle.wrap(span), 0, hourStr.length, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
 
@@ -178,8 +177,8 @@ class StopScheduleActivity extends AppCompatActivity with BaseActivity with Shor
         } else {
           val (before, after) = minutes.span(_ < currentMinute)
 
-          val spanPast = new ForegroundColorSpan(getResources.getColor(R.color.schedule_past))
-          val spanFuture = new ForegroundColorSpan(getResources.getColor(R.color.schedule_future))
+          val spanPast = new ForegroundColorSpan(ContextCompat.getColor(context, R.color.schedule_past))
+          val spanFuture = new ForegroundColorSpan(ContextCompat.getColor(context, R.color.schedule_future))
 
           hourStr.setSpan(CharacterStyle.wrap(spanFuture), 0, hourStr.length, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
 

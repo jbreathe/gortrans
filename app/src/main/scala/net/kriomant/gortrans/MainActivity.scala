@@ -3,7 +3,6 @@ package net.kriomant.gortrans
 import android.app.SearchManager
 import android.content.{Context, Intent}
 import android.os.{Build, Bundle}
-import android.support.v4.view.MenuItemCompat
 import android.support.v7.widget
 import android.view.{ActionMode, Menu, MenuItem, View}
 import android.widget.AdapterView.OnItemClickListener
@@ -34,7 +33,6 @@ class MainActivityBase extends RouteListBaseActivity with CreateGroupDialog.List
 
   import MainActivity._
 
-  private[this] final val TAG = classOf[MainActivityBase].getSimpleName
   override val layoutResource: Int = R.layout.main_activity
   var actionModeHelper: MultiListActionModeHelper = _
 

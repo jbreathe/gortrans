@@ -5,7 +5,7 @@ import android.graphics.{Bitmap, Canvas}
 import android.location.Location
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.{MenuItem, View, Window}
+import android.view.{MenuItem, View}
 import android.widget.TextView
 import com.google.android.gms.maps.GoogleMap.{InfoWindowAdapter, OnCameraChangeListener}
 import com.google.android.gms.maps.model._
@@ -49,11 +49,8 @@ class RouteMapV2Activity extends AppCompatActivity
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
 
-    setSupportProgressBarIndeterminateVisibility(false)
-
     setContentView(R.layout.route_map_v2)
 
-    getSupportActionBar.setDisplayShowHomeEnabled(true)
     getSupportActionBar.setDisplayHomeAsUpEnabled(true)
 
     val mapFragment = getSupportFragmentManager.findFragmentById(R.id.route_map_v2_view).asInstanceOf[SupportMapFragment]
@@ -293,11 +290,9 @@ class RouteMapV2Activity extends AppCompatActivity
   }
 
   def startBackgroundProcessIndication() {
-    setSupportProgressBarIndeterminateVisibility(true)
   }
 
   def stopBackgroundProcessIndication() {
-    setSupportProgressBarIndeterminateVisibility(true)
   }
 
   def clearVehicleMarkers() {
