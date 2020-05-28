@@ -4,6 +4,6 @@ Android application which tracks location of public transport vehicles in Novosi
 
 ## Building
 
-1. Install Android SDK platform (API 19)
+1. Install Android SDK platform (API level 28)
 2. Replace 'API_KEY' in string 'google_maps_key' in 'strings' resource with your Google Maps API key
 3. Run ```gradlew :app:packageDebug```
