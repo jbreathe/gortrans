@@ -3,13 +3,12 @@ package net.kriomant.gortrans
 import android.app.ActivityManager
 import android.content.{Context, Intent}
 import android.os.Bundle
-import android.preference.{CheckBoxPreference, PreferenceActivity}
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.preference.PreferenceFragmentCompat
 import android.view.MenuItem
 import com.google.android.gms.common.{ConnectionResult, GooglePlayServicesUtil}
 
 object SettingsActivity {
-  final val KEY_USE_NEW_MAP = "use_new_map"
-
   def createIntent(caller: Context): Intent = {
     new Intent(caller, classOf[SettingsActivity])
   }
@@ -29,22 +28,13 @@ object SettingsActivity {
   }
 }
 
-// todo: https://stackoverflow.com/q/17849193
-class SettingsActivity extends PreferenceActivity with BaseActivity {
-
-  import SettingsActivity._
-
+class SettingsActivity extends AppCompatActivity with BaseActivity {
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
+    setContentView(R.layout.settings_activity)
 
-    addPreferencesFromResource(R.xml.preferences)
-
-    val useNewMapPref = findPreference(KEY_USE_NEW_MAP).asInstanceOf[CheckBoxPreference]
-    useNewMapPref.setEnabled(isNewGMapsAvailable(this))
-
-    //    val actionBar = getSupportActionBar
-    //    actionBar.setDisplayShowHomeEnabled(true)
-    //    actionBar.setDisplayHomeAsUpEnabled(true)
+    val actionBar = getSupportActionBar
+    actionBar.setDisplayHomeAsUpEnabled(true)
   }
 
   override def onOptionsItemSelected(item: MenuItem): Boolean = item.getItemId match {
@@ -56,3 +46,8 @@ class SettingsActivity extends PreferenceActivity with BaseActivity {
   }
 }
 
+class SettingsFragment extends PreferenceFragmentCompat {
+  override def onCreatePreferences(bundle: Bundle, s: String): Unit = {
+    addPreferencesFromResource(R.xml.preferences)
+  }
+}

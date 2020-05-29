@@ -1,18 +1,16 @@
 package net.kriomant.gortrans
 
-import android.app.{AlertDialog, Dialog}
 import android.content.res.Resources
-import android.content.{Context, DialogInterface, Intent}
+import android.content.{Context, Intent}
 import android.graphics.drawable.{Drawable, NinePatchDrawable}
 import android.graphics.{Point, _}
 import android.location.Location
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.View.{MeasureSpec, OnClickListener}
+import android.view.View.MeasureSpec
 import android.view._
 import android.widget._
 import net.kriomant.gortrans.core.{Direction, VehicleType}
@@ -40,7 +38,6 @@ class RouteMapOSMActivity extends AppCompatActivity
   with ShortcutTarget {
 
   import RouteMapLike._
-  import RouteMapOSMActivity._
 
   /** Same zoom level in Google Maps v1 and v2 leads to different actual
     * scale. Since MapCameraPosition is based on Google Maps v2 CameraPosition,
@@ -58,7 +55,6 @@ class RouteMapOSMActivity extends AppCompatActivity
   var realVehicleLocationOverlays: Seq[Overlay] = Seq()
   var balloonController: MapBalloonControllerOSM = _
   private[this] var mapView: MapView = _
-  private[this] var newMapNotice: View = _
 
   def isRouteDisplayed = false
 
@@ -77,18 +73,6 @@ class RouteMapOSMActivity extends AppCompatActivity
     balloonController = new MapBalloonControllerOSM(this, mapView)
     vehiclesOverlay = new VehiclesOverlayOSM(this, getResources, balloonController)
     routeStopNameOverlayManager = new RouteStopNameOverlayManagerOSM(getResources)
-
-    newMapNotice = findViewById(R.id.new_map_notice)
-
-    val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-    if (!prefs.contains(SettingsActivity.KEY_USE_NEW_MAP) && SettingsActivity.isNewGMapsAvailable(this)) {
-      newMapNotice.setVisibility(View.VISIBLE)
-      newMapNotice.setOnClickListener(new OnClickListener {
-        def onClick(v: View) {
-          showDialog(DIALOG_NEW_MAP_NOTICE)
-        }
-      })
-    }
   }
 
   override def onPostCreate(savedInstanceState: Bundle) {
@@ -280,22 +264,6 @@ class RouteMapOSMActivity extends AppCompatActivity
         }
         updateOverlays()
       */
-  }
-
-  override def onCreateDialog(id: Int): Dialog = {
-    id match {
-      case DIALOG_NEW_MAP_NOTICE =>
-        new AlertDialog.Builder(this)
-          .setTitle(R.string.osm_map_dialog_title)
-          .setMessage(R.string.osm_map_dialog_message)
-          .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener {
-            def onClick(dialog: DialogInterface, which: Int) {
-              dismissDialog(DIALOG_NEW_MAP_NOTICE)
-            }
-          })
-          .create()
-      case _ => super.onCreateDialog(id)
-    }
   }
 }
 
