@@ -45,7 +45,9 @@ repositories {
 dependencies {
     implementation "org.scala-lang:scala-library:2.11.12"
 
+    // compat
     implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:preference-v7:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'
 
     implementation project(':core')

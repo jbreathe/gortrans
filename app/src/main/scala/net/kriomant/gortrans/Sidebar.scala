@@ -56,11 +56,4 @@ class Sidebar(activity: Activity, navigationDrawer: View, listener: Sidebar.Side
       listener.onItemSelected(items(position).intent)
     }
   })
-
-  val settingsButton: ImageButton = navigationDrawer.findViewById(R.id.settings).asInstanceOf[ImageButton]
-  settingsButton.setOnClickListener(new View.OnClickListener {
-    def onClick(view: View) {
-      listener.onSettingsSelected()
-    }
-  })
 }

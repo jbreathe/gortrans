@@ -135,8 +135,8 @@
     </plurals>
 
     <!-- Preferences -->
-    <string name="use_new_map">Новая карта</string>
-    <string name="use_new_map_summary">Использовать новый компонент карт</string>
+    <string name="my_setting">Какая-то настройка</string>
+    <string name="my_setting_summary">Которая на самом деле ничего не делает</string>
 
     <string name="new_map_not_supported">Новые карты не поддерживаются на вашем устройстве, будут использоваться старые
         карты.
