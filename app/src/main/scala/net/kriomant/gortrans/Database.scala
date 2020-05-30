@@ -15,7 +15,7 @@ object Database {
   val TAG: String = getClass.getName
 
   val NAME = "gortrans"
-  val VERSION = 7
+  val VERSION = 8
 
   def getWritable(context: Context) = new Database(new Helper(context).getWritableDatabase)
 
