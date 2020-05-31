@@ -28,14 +28,7 @@ android {
     compileOptions.sourceCompatibility = JavaVersion.VERSION_1_8
     compileOptions.targetCompatibility = JavaVersion.VERSION_1_8
 
-//    sourceSets["main"].java.srcDir("src/main/scala")
-    sourceSets {
-        main {
-            java {
-                srcDirs "src/main/scala"
-            }
-        }
-    }
+    sourceSets["main"].java.srcDir("src/main/scala")
 }
 
 repositories {
