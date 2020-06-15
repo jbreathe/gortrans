@@ -145,13 +145,4 @@
     <!-- Navigation drawer -->
     <string name="open_drawer">Открыть панель навигации</string>
     <string name="close_drawer">Закрыть панель навигации</string>
-
-    <string name="news">Новости</string>
-    <plurals name="n_news">
-        <item quantity="one">%1$d новость</item>
-        <item quantity="two">%1$d новости</item>
-        <item quantity="few">%1$d новостей</item>
-    </plurals>
-    <string name="read_more">Подробнее</string>
-    <string name="no_news">Нет новостей</string>
 </resources>

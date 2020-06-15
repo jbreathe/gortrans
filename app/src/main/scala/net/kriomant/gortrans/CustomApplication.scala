@@ -28,8 +28,6 @@ class CustomApplication extends Application {
     database = Database.getWritable(this)
     dataManager = new DataManager(this, database)
 
-    Service.init(this)
-
     initializeGoogleAnalytics()
   }
 
