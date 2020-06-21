@@ -3,6 +3,7 @@ package net.kriomant.gortrans
 import android.content.res.Resources
 import android.graphics._
 import android.graphics.drawable.Drawable
+import android.support.v4.content.res.ResourcesCompat
 
 object VehicleMarker {
 
@@ -23,9 +24,9 @@ object VehicleMarker {
     // color filter is part of constant state and is shared between
     // drawables, so they are needed to be mutated.
     def this(resources: Resources, angle: Option[Float], color: Int) = this(
-      resources.getDrawable(R.drawable.vehicle_marker_back).mutate(),
-      resources.getDrawable(R.drawable.vehicle_marker_front),
-      resources.getDrawable(R.drawable.vehicle_marker_arrow).mutate(),
+      ResourcesCompat.getDrawable(resources, R.drawable.vehicle_marker_back, null).mutate(),
+      ResourcesCompat.getDrawable(resources, R.drawable.vehicle_marker_front, null),
+      ResourcesCompat.getDrawable(resources, R.drawable.vehicle_marker_arrow, null).mutate(),
       angle, color
     )
 
@@ -59,14 +60,14 @@ class VehicleMarker private(state: VehicleMarker.ConstantState) extends Drawable
 
   def draw(canvas: Canvas) {
     val bounds = getBounds
-    canvas.saveLayerAlpha(bounds.left, bounds.top, bounds.right, bounds.bottom, _alpha, Canvas.HAS_ALPHA_LAYER_SAVE_FLAG)
+    canvas.saveLayerAlpha(bounds.left, bounds.top, bounds.right, bounds.bottom, _alpha)
     state.back.draw(canvas)
     if (state.front.isVisible)
       state.front.draw(canvas)
 
     if (state.arrow.isVisible) {
       state.angle foreach { a =>
-        canvas.save(Canvas.MATRIX_SAVE_FLAG)
+        canvas.save
         val arrowBounds = state.arrow.getBounds
         canvas.rotate(-a, (arrowBounds.left + arrowBounds.right) / 2.0f, (arrowBounds.top + arrowBounds.bottom) / 2.0f)
         state.arrow.draw(canvas)

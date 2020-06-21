@@ -1,7 +1,9 @@
 package net.kriomant.gortrans
 
+import android.app.SearchManager
 import android.content.{Context, Intent}
-import android.os.Bundle
+import android.os.{Build, Bundle}
+import android.support.v7.widget
 import android.view.{ActionMode, Menu, MenuItem, View}
 import android.widget.AdapterView.OnItemClickListener
 import android.widget._
@@ -31,7 +33,6 @@ class MainActivityBase extends RouteListBaseActivity with CreateGroupDialog.List
 
   import MainActivity._
 
-  private[this] final val TAG = classOf[MainActivityBase].getSimpleName
   override val layoutResource: Int = R.layout.main_activity
   var actionModeHelper: MultiListActionModeHelper = _
 
@@ -53,17 +54,24 @@ class MainActivityBase extends RouteListBaseActivity with CreateGroupDialog.List
   }
 
   override def onCreateOptionsMenu(menu: Menu): Boolean = {
-    super.onCreateOptionsMenu(menu)
     getMenuInflater.inflate(R.menu.route_list_menu, menu)
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+      val item = menu.findItem(R.id.search_route)
+      val searchView = item.getActionView.asInstanceOf[widget.SearchView]
+      val searchManager = getSystemService(Context.SEARCH_SERVICE).asInstanceOf[SearchManager]
+      searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName))
+    }
+
     true
   }
 
   override def onOptionsItemSelected(item: MenuItem): Boolean = item.getItemId match {
-    case R.id.search =>
+    case R.id.search_route =>
       onSearchRequested()
       true
 
-    case _ => super.onOptionsItemSelected(item)
+    case _ => false
   }
 
   override def onSaveInstanceState(outState: Bundle) {

@@ -3,16 +3,14 @@ package net.kriomant.gortrans
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
-import android.support.v4.app.ActionBarDrawerToggle
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v4.widget.DrawerLayout.DrawerListener
-import android.support.v7.app.ActionBarActivity
-import android.util.TypedValue
+import android.support.v7.app.{ActionBarDrawerToggle, AppCompatActivity}
 import android.view.{Menu, MenuItem, View}
 import net.kriomant.gortrans.Sidebar.SidebarListener
 
-trait HavingSidebar extends ActionBarActivity {
+trait HavingSidebar extends AppCompatActivity {
   var drawerLayout: DrawerLayout = _
   var drawer: View = _
   var drawerToggle: ActionBarDrawerToggle = _
@@ -24,14 +22,11 @@ trait HavingSidebar extends ActionBarActivity {
 
     val actionBar = getSupportActionBar
     actionBar.setDisplayHomeAsUpEnabled(true)
-    actionBar.setHomeButtonEnabled(true)
 
     drawerLayout = findViewById(R.id.drawer_layout).asInstanceOf[DrawerLayout]
     drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START)
 
-    val drawerIndicatorV = new TypedValue
-    getTheme.resolveAttribute(R.attr.homeAsUpIndicator, drawerIndicatorV, true)
-    drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, drawerIndicatorV.resourceId, R.string.open_drawer, R.string.close_drawer) {
+    drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open_drawer, R.string.close_drawer) {
       override def onDrawerOpened(drawerView: View) {
         actionBar.setTitle(R.string.app_name)
         supportInvalidateOptionsMenu()

@@ -3,7 +3,7 @@ package net.kriomant.gortrans
 import android.app.Activity
 import android.content.{Context, Intent}
 import android.os.Bundle
-import android.view.{MenuItem, View}
+import android.view.{Menu, MenuItem, View}
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.{AbsListView, AdapterView, ListView}
 
@@ -35,12 +35,13 @@ class RouteChooseActivity extends RouteListBaseActivity with BaseActivity {
 
   val listViews: mutable.Buffer[ListView] = mutable.Buffer[ListView]()
   var routeIds = mutable.Set.empty[Long]
+  var optionsMenu: Menu = _
 
   override def onCreate(bundle: Bundle) {
     super.onCreate(bundle)
 
     val actionBar = getSupportActionBar
-    actionBar.setIcon(R.drawable.accept)
+    actionBar.setDisplayHomeAsUpEnabled(true)
 
     val ids = getIntent.getLongArrayExtra(EXTRA_ROUTE_IDS)
     if (ids != null) {
@@ -48,6 +49,24 @@ class RouteChooseActivity extends RouteListBaseActivity with BaseActivity {
     }
 
     updateControls()
+  }
+
+  override def onCreateOptionsMenu(menu: Menu): Boolean = {
+    super.onCreateOptionsMenu(menu)
+    getMenuInflater.inflate(R.menu.route_choose_menu, menu)
+    this.optionsMenu = menu
+    true
+  }
+
+  override def onOptionsItemSelected(item: MenuItem): Boolean = item.getItemId match {
+    case R.id.accept  =>
+      setResult(Activity.RESULT_OK, resultToIntent(routeIds))
+      finish()
+      true
+    case android.R.id.home =>
+      finish()
+      true
+    case _ => super.onOptionsItemSelected(item)
   }
 
   /** This method is called by tab fragments when their views are created. */
@@ -84,20 +103,14 @@ class RouteChooseActivity extends RouteListBaseActivity with BaseActivity {
 
     routeIds.size match {
       case 0 =>
-        actionBar.setHomeButtonEnabled(false)
         actionBar.setTitle(R.string.choose_routes)
       case count =>
-        actionBar.setHomeButtonEnabled(true)
         actionBar.setTitle(compatibility.plurals.getQuantityString(RouteChooseActivity.this, R.plurals.routes, count, count))
     }
-  }
 
-  override def onOptionsItemSelected(item: MenuItem): Boolean = item.getItemId match {
-    case android.R.id.home =>
-      setResult(Activity.RESULT_OK, resultToIntent(routeIds))
-      finish()
-      true
-
-    case _ => super.onOptionsItemSelected(item)
+    if (optionsMenu != null) {
+      val menuItem = optionsMenu.findItem(R.id.accept)
+      menuItem.setEnabled(routeIds.nonEmpty)
+    }
   }
 }

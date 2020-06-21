@@ -136,7 +136,7 @@ object parsing {
   }
 
   def parseStopsList(content: String): Map[String, Int] = {
-    content.lines.map {
+    content.linesIterator.map {
       line =>
         val parts = line.split('|')
         // Line format is "name|name|0|id"

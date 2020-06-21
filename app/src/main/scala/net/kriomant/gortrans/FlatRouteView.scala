@@ -4,14 +4,16 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.graphics.{Canvas, Color, Paint}
 import android.os.Parcelable
+import android.support.v4.content.ContextCompat
+import android.support.v4.content.res.ResourcesCompat
 import android.util.AttributeSet
 import android.view.View.MeasureSpec
 import android.view.{MotionEvent, View}
 
 class FlatRouteView(context: Context, attributes: AttributeSet) extends View(context, attributes) {
-  private[this] val stopImage = context.getResources.getDrawable(R.drawable.route_stop_marker)
-  private[this] val selectedStopImage = context.getResources.getDrawable(R.drawable.route_stop_marker_selected)
-  private[this] val vehicleIcon = new VehicleMarker(getResources, None, getResources.getColor(R.color.forward_vehicle))
+  private[this] val stopImage = ResourcesCompat.getDrawable(context.getResources, R.drawable.route_stop_marker, null)
+  private[this] val selectedStopImage = ResourcesCompat.getDrawable(context.getResources, R.drawable.route_stop_marker_selected, null)
+  private[this] val vehicleIcon = new VehicleMarker(getResources, None, ContextCompat.getColor(getContext, R.color.forward_vehicle))
   private[this] val _padding = stopImage.getIntrinsicWidth / 2
   var currentTouchHandler: TouchHandler = _
   private[this] var _totalLength: Float = 0

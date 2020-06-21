@@ -33,7 +33,7 @@ object Sidebar {
 class Sidebar(activity: Activity, navigationDrawer: View, listener: Sidebar.SidebarListener) {
   val list: ListView = navigationDrawer.findViewById(R.id.sidebar_content).asInstanceOf[ListView]
 
-  val items = Seq(
+  val items: Seq[Sidebar.Entry] = Seq(
     Sidebar.Entry(R.string.groups, {
       val intent = GroupsActivity.createIntent(activity)
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION)
@@ -49,13 +49,6 @@ class Sidebar(activity: Activity, navigationDrawer: View, listener: Sidebar.Side
   list.setOnItemClickListener(new OnItemClickListener {
     def onItemClick(parent: AdapterView[_], view: View, position: Int, id: Long) {
       listener.onItemSelected(items(position).intent)
-    }
-  })
-
-  val settingsButton: ImageButton = navigationDrawer.findViewById(R.id.settings).asInstanceOf[ImageButton]
-  settingsButton.setOnClickListener(new View.OnClickListener {
-    def onClick(view: View) {
-      listener.onSettingsSelected()
     }
   })
 }

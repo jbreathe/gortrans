@@ -20,6 +20,7 @@
         Создайте группу маршрутов или откройте полный список для просмотра индивидуальных маршрутов.
     </string>
     <string name="choose_routes">Выберите маршруты</string>
+    <string name="accept_selection">Подтвердить выбор</string>
     <string name="groups">Группы</string>
 
     <string name="bus">Автобус</string>
@@ -110,7 +111,8 @@
 
     <string name="delete">Удалить</string>
     <string name="edit">Изменить</string>
-    <string name="accept">Подтвердить</string>
+    <!-- unused? -->
+    <!--<string name="accept">Подтвердить</string>-->
 
     <!-- One schedule row for vehicle popup on map. Parameters: time, stop name. -->
     <string name="vehicle_schedule_row">%1$s %2$s</string>
@@ -133,8 +135,8 @@
     </plurals>
 
     <!-- Preferences -->
-    <string name="use_new_map">Новая карта</string>
-    <string name="use_new_map_summary">Использовать новый компонент карт</string>
+    <string name="my_setting">Какая-то настройка</string>
+    <string name="my_setting_summary">Которая на самом деле ничего не делает</string>
 
     <string name="new_map_not_supported">Новые карты не поддерживаются на вашем устройстве, будут использоваться старые
         карты.

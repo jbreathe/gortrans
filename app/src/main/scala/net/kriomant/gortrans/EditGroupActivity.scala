@@ -3,7 +3,7 @@ package net.kriomant.gortrans
 import android.app.Activity
 import android.content.{Context, Intent}
 import android.os.Bundle
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.text.SpannableStringBuilder
 import android.text.style.ImageSpan
 import android.view.View
@@ -23,7 +23,7 @@ object EditGroupActivity {
   }
 }
 
-class EditGroupActivity extends ActionBarActivity with BaseActivity {
+class EditGroupActivity extends AppCompatActivity with BaseActivity {
   self =>
 
   import EditGroupActivity._
@@ -41,7 +41,7 @@ class EditGroupActivity extends ActionBarActivity with BaseActivity {
 
     groupNameEdit = findViewById(R.id.group_name_edit).asInstanceOf[EditText]
     routesText = findViewById(R.id.routes_list).asInstanceOf[TextView]
-    val editRoutesButton = findViewById(R.id.edit_routes)
+    val editRoutesButton = findViewById(R.id.edit_routes).asInstanceOf[View]
 
     editRoutesButton.setOnClickListener(new OnClickListener {
       def onClick(v: View) {

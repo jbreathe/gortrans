@@ -3,9 +3,8 @@ package net.kriomant.gortrans
 import android.content.{Context, Intent}
 import android.os.Bundle
 import android.support.v4.widget.CursorAdapter
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.view.{Menu, MenuItem, View}
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.{AdapterView, ListAdapter, ListView, TextView}
 import net.kriomant.gortrans.core._
 import net.kriomant.gortrans.utils.closing
@@ -25,11 +24,9 @@ object RouteInfoActivity {
   }
 }
 
-class RouteInfoActivity extends ActionBarActivity with BaseActivity {
+class RouteInfoActivity extends AppCompatActivity with BaseActivity {
 
   import RouteInfoActivity._
-
-  private[this] final val TAG = "RouteInfoActivity"
 
   private[this] var stopsCursor: Database.FoldedRouteStopsTable.Cursor = _
 
@@ -111,7 +108,7 @@ class RouteInfoActivity extends ActionBarActivity with BaseActivity {
       }
 
       if (stopsCursor.getCount != 0) {
-        findViewById(R.id.error_message).setVisibility(View.GONE)
+        findViewById(R.id.error_message).asInstanceOf[View].setVisibility(View.GONE)
         listView.setVisibility(View.VISIBLE)
       } else {
         val view = findViewById(R.id.error_message).asInstanceOf[TextView]

@@ -4,8 +4,8 @@ import android.content.Intent
 import android.graphics.{Bitmap, Canvas}
 import android.location.Location
 import android.os.Bundle
-import android.support.v7.app.ActionBarActivity
-import android.view.{MenuItem, View, Window}
+import android.support.v7.app.AppCompatActivity
+import android.view.{MenuItem, View}
 import android.widget.TextView
 import com.google.android.gms.maps.GoogleMap.{InfoWindowAdapter, OnCameraChangeListener}
 import com.google.android.gms.maps.model._
@@ -28,7 +28,7 @@ object RouteMapV2Activity {
 
 }
 
-class RouteMapV2Activity extends ActionBarActivity
+class RouteMapV2Activity extends AppCompatActivity
   with RouteMapLike {
 
   import RouteMapV2Activity._
@@ -49,13 +49,8 @@ class RouteMapV2Activity extends ActionBarActivity
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
 
-    // Enable to show indeterminate progress indicator in activity header.
-    supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS)
-    setSupportProgressBarIndeterminateVisibility(false)
-
     setContentView(R.layout.route_map_v2)
 
-    getSupportActionBar.setDisplayShowHomeEnabled(true)
     getSupportActionBar.setDisplayHomeAsUpEnabled(true)
 
     val mapFragment = getSupportFragmentManager.findFragmentById(R.id.route_map_v2_view).asInstanceOf[SupportMapFragment]
@@ -295,11 +290,9 @@ class RouteMapV2Activity extends ActionBarActivity
   }
 
   def startBackgroundProcessIndication() {
-    setSupportProgressBarIndeterminateVisibility(true)
   }
 
   def stopBackgroundProcessIndication() {
-    setSupportProgressBarIndeterminateVisibility(true)
   }
 
   def clearVehicleMarkers() {
