@@ -32,7 +32,7 @@ class CustomApplication extends Application {
   }
 
   private def initializeGoogleAnalytics() {
-    EasyTracker.getInstance().setContext(this)
+//    EasyTracker.getInstance().setContext(this)
   }
 
   /** Perform upgrade actions if needed. */
